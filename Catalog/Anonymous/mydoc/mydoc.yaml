@@ -1,0 +1,29 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: mydoc
+spec:
+  owner: mydoc-Team
+  domain: documents
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: mydoc-Service
+  title: mydoc Service
+  description: A Service with TechDocs documentation
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  lifecycle: experimental
+  owner: Main-Team
+
+  definition: |
+    openapi: 3.0.3
+    info:
+      title: Helloworld API
+      description: API defining the operations available in the Helloworld API
+      version: 0.1.0
+---

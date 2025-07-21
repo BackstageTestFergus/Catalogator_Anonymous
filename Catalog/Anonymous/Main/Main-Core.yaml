@@ -1,0 +1,72 @@
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-system
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: Main
+spec:
+  domain: documents
+  owner: Main-Team
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Main-Web-Application
+spec:
+  type: service
+  lifecycle: experimental
+  owner: Main-Team
+  system: Main
+  providesApi: [Main-API]
+  dependsOn: ['resource:Main-DB']
+  techstack: [dotnet]
+
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: Main-API
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: Main-Team
+  system: Main
+  definition: |
+    syntax = "proto3";
+
+    service Exampler {
+      rpc Example (ExampleMessage) returns (ExampleMessage) {};
+    }
+
+    message ExampleMessage {
+      string example = 1;
+    };
+---
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: Main-DB
+spec:
+  type: database
+  lifecycle: experimental
+  owner: Main-Team
+  system: Main
+  #dependenyOf: [Main-Web-Application]  
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Main-TaskRunner
+spec:
+  type: service
+  lifecycle: experimental
+  owner: Main-Team
+  system: Main 
+  consumesApis: [Main-API]
+  #dependsOn: [Main-DB]
+  dependsOn: ['resource:Main-DB']

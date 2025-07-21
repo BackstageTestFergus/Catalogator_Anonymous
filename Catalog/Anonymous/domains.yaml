@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: documents
+  description: Everything related to document processing 
+  title: Documents
+  links:
+    - url: http://example.com/domain/artists/
+      title: Domain Readme
+    - url: http://example.com/domains/artists/dashboard
+      title: Domain Metrics Dashboard
+      icon: dashboard
+spec:
+  owner: Main-Team
+  type: product-group
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: core
+  description: Core Services 
+  title: Core
+  links:
+    - url: http://example.com/domain/artists/
+      title: Domain Readme
+    - url: http://example.com/domains/artists/dashboard
+      title: Domain Metrics Dashboard
+      icon: dashboard
+spec:
+  owner: Main-Team
+  type: product-group
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: common
+  description: Common Services 
+  title: Common
+  links:
+    - url: http://example.com/domain/artists/
+      title: Domain Readme
+    - url: http://example.com/domains/artists/dashboard
+      title: Domain Metrics Dashboard
+      icon: dashboard
+spec:
+  owner: Main-Team
+  type: product-group
